@@ -21,9 +21,9 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag
                   <b><i class="far fa-clock me-2"></i>{{item.description}}</b>
                 </div>
                 <div class="content-drag-zone col-11 p-2">
-                  <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListConnectedTo]="[]"
+                  <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListConnectedTo]="connectedList()"
                        [cdkDropListData]="item.dataSource" [id]="item.id"
-                       class="d-flex" (cdkDropListDropped)="drop($event, item.description)">
+                       class="d-flex h-100" (cdkDropListDropped)="drop($event, item.description)">
                     <div class="example-box mx-1" *ngFor="let timePeriod of item.dataSource"
                          [style.background-color]="timePeriod.color" cdkDrag [cdkDragData]="timePeriod">
                       <div class="d-flex justify-content-between align-items-center h-100">
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
   constructor(public dialog: Dialog) {
     this.times = [
       {id: '1', description: '01:00', dataSource: new Array<ICard>},
-      {id: '2', description: '02:00', dataSource: new Array<ICard>},
+      {id: '2', description: '02:00', dataSource: [{id:1, text: 'TESTE', date: new Date(), color: '#fff'}]},
       {id: '3', description: '03:00', dataSource: new Array<ICard>},
       {id: '4', description: '04:00', dataSource: new Array<ICard>},
       {id: '5', description: '05:00', dataSource: new Array<ICard>},
@@ -161,6 +161,10 @@ export class AppComponent implements OnInit {
     } else {
       return ''
     }
+  }
+
+  connectedList(): Array<string> {
+    return this.times.map(i => i.id)
   }
 }
 
