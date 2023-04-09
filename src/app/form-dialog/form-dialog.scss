@@ -1,0 +1,30 @@
+:host {
+  display: inline-block;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.one {
+  background-color: rgba(blue, 0.3);
+
+  &:hover {
+    background-color: rgba(blue, 0.6);
+  }
+}
+
+.two {
+  background-color: rgba(yellow, 0.3);
+
+  &:hover {
+    background-color: rgba(yellow, 0.6);
+  }
+}
+
+.three {
+  background-color: rgba(red, 0.3);
+
+  &:hover {
+    background-color: rgba(red, 0.6);
+  }
+}
